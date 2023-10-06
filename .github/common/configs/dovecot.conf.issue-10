@@ -1,5 +1,0 @@
-!include /dovecot/configs/dovecot.conf
-
-plugin {
-  fts_languages = de en
-}

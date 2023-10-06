@@ -1,5 +1,0 @@
-!include /dovecot/configs/dovecot.conf
-
-plugin {
-  fts_filters_en = snowball english-possessive stopwords
-}

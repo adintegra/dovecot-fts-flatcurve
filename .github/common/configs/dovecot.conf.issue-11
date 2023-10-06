@@ -1,5 +1,0 @@
-!include /dovecot/configs/dovecot.conf
-
-plugin {
-  fts_flatcurve_rotate_size = 2
-}
