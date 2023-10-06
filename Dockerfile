@@ -2,11 +2,12 @@ FROM alpine:3.18
 
 LABEL org.opencontainers.image.authors="Michael Slusarz <slusarz@curecanti.org>"
 
-ARG DOVECOT_VERSION=2.3.20
-ARG PIGEONHOLE_VERSION=0.5.20
+ARG DOVECOT_VERSION=2.3.21
+ARG PIGEONHOLE_VERSION=0.5.21
 
 RUN apk add --no-cache icu libstemmer libexttextcat tini \
-	xapian-core openssl1.1-compat ca-certificates
+	xapian-core openssl1.1-compat ca-certificates \
+  bash nano fetchmail
 
 # All these commands are run together to minimize size of container;
 # we don't want any of the temporary compilation collateral to make
@@ -56,7 +57,8 @@ RUN addgroup -g 1000 vmail && \
     addgroup -g 1002 dovenull && \
     adduser -DH -u 1002 -G dovenull dovenull
 
-ADD docker/dovecot.conf /etc/dovecot/dovecot.conf 
+ADD docker/dovecot.conf /etc/dovecot/dovecot.conf
+ADD docker/fetchmailrc /etc/dovecot/fetchmailrc
 
 EXPOSE 24
 EXPOSE 143
